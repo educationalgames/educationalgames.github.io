@@ -14,11 +14,13 @@
     border-radius: 5px;
     margin: auto;
     width: 70%;
+    height: 80%;
     padding-left: 0;
     padding-right: 0;
     margin-left: auto;
     margin-right: auto;
     display: block;
+    margin-bottom: 1px;
 }
 canvas {
     padding-left: 0;
@@ -33,7 +35,7 @@ canvas {
 
 <div class = "card" id = "main_menu">
     <center>
-		<div class = "card" id = "img_menu" height="100%" width="100%">
+		<div class = "card" id = "img_menu" height="90%" width="90%">
         <img src="main_menu.jpeg" height="75%" width="75%">
         </div>
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"style="width: 99%; margin: 3px"
@@ -80,11 +82,10 @@ canvas {
 </div>
 
 <div class = "card" id = "main_game" hidden>
-<canvas  id="canvas" class = "card" width="200" height="100"></canvas>
+<canvas  id="canvas" class = "card" width="150" height="100"></canvas>
 <br>
 <div class = "card" id="card_answer">
         <p id = "text_view_quest" style='text-align:center;font-size: 40px;font-family: "Courier New", cursive;'><br>Grunter</p>
-        <br>
 		<p align="right" style='text-align:right;font-size: 30px;font-family: "Courier New", cursive;' id="text_view_score">0</p> 
     </div>
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px"
