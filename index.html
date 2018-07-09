@@ -69,7 +69,7 @@ canvas {
 
 <div class = "card" id="card_restart" hidden>
     <center>
-        <p id = "text_view_quest" style='text-align:center;font-size: 40px;font-family: "Courier New", cursive;'><br>ПОРОСЕНОК ПЕТР НЕДОЕХАЛ ДО ЗАПАДНОЙ ВИРДЖИНИИ((9(</p>
+        <p id = "text_view_quest" style='text-align:center;font-size: 40px;font-family: "Courier New", cursive;'><br>ПОРОСЕНОК ПЕТР НЕ ДОЕХАЛ ДО ЗАПАДНОЙ ВИРДЖИНИИ((9(</p>
         <br>
         <br>
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"style="width: 99%; margin: 3px"
@@ -108,10 +108,13 @@ function startGame() {
     document.getElementById("card_answer").hidden = false;
     document.getElementById("card_restart").hidden = true;
     myGamePiece = new component(120, 120, "petr.png", canvas_width/2-10, 170, "image");
+    myGameSay = new component(120, 120, "say.png", canvas_width/2-110, 170, "image");
     myBackground = new component(canvas_width*2, canvas_height, "background_krita.png", 0, 0, "background");
     text_view = new text();
+	loadRandomQuest();	
     if(first_start)
     {
+		
         myGameArea.start('track0.ogg');
         musicStart();
     }
