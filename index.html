@@ -47,6 +47,7 @@ canvas {
 <div class = "card" id="card_answer">
         <p id = "text_view_quest" style='text-align:center;font-size: 40px;font-family: "Courier New", cursive;'><br>Grunter</p>
         <br>
+		<p align="right" style='text-align:right;font-size: 30px;font-family: "Courier New", cursive;' id="text_view_score">0</p> 
     </div>
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px"
     onclick="answerClick(0)" id="button_answer_0">
@@ -91,6 +92,7 @@ canvas {
 <script>
 var first_start = true;
 var pigBoost = 0;
+var score = 0;
 var myGamePiece;
 var myBackground;
 var text_view;
@@ -102,8 +104,9 @@ var random_quest_key = "";
 var random_quest_val = "";
 
 function startGame() {
+	score = 0;
+	
     document.getElementById("main_game").hidden = false;
-
     document.getElementById("main_menu").hidden = true;
     document.getElementById("card_answer").hidden = false;
     document.getElementById("card_restart").hidden = true;
@@ -199,6 +202,7 @@ function component(width, height, color, x, y, type) {
 }
 
 function updateGameArea() {
+	
     myGameArea.clear();
     myBackground.speedX = -2;
     if(pigBoost > 0)
@@ -217,7 +221,7 @@ function updateGameArea() {
     {
         myGamePiece.speedX = -0.2;
     }
-    if(myGamePiece.x < 0)
+    if(myGamePiece.x < -100)
     {
         document.getElementById("card_restart").hidden = false;
         document.getElementById("card_answer").hidden = true;
@@ -227,7 +231,7 @@ function updateGameArea() {
     myBackground.update();
     myGamePiece.newPos();    
     myGamePiece.update();
-    text_view.update()
+    document.getElementById("text_view_score").innerHTML = score;
 }
 
 function move(dir) {
@@ -250,6 +254,7 @@ function answerClick(button_id)
     if(button_id == true_answer)
     {
         pigBoost += 30;
+		score+=1;
     }else
     {
         alert(random_quest_val);
