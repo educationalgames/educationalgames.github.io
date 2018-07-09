@@ -33,12 +33,50 @@ canvas {
 
 <div class = "card" id = "main_menu">
     <center>
-        
-        <img src="main_menu.jpeg">
+		<div class = "card" id = "img_menu" height="100%" width="100%">
+        <img src="main_menu.jpeg" height="75%" width="75%">
+        </div>
     <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"style="width: 99%; margin: 3px"
-    onclick="startGame()" id="button_restart">
-        Начать путешествие!
+    onclick="initLevel(1)" id="button_restart">
+        Уровень 1
     </button>
+    
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"style="width: 99%; margin: 3px"
+    onclick="initLevel(2)" id="button_restart">
+        Уровень 2
+    </button>
+    
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"style="width: 99%; margin: 3px"
+    onclick="initLevel(3)" id="button_restart">
+        Уровень 3
+    </button>
+    
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"style="width: 99%; margin: 3px"
+    onclick="initLevel(4)" id="button_restart">
+        Уровень 4
+    </button>
+    
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"style="width: 99%; margin: 3px"
+    onclick="initLevel(5)" id="button_restart">
+        Уровень 5
+    </button>
+    
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"style="width: 99%; margin: 3px"
+    onclick="initLevel(6)" id="button_restart">
+        Уровень 6
+    </button>
+    
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"style="width: 99%; margin: 3px"
+    onclick="initLevel(7)" id="button_restart">
+        Уровень 7
+    </button>
+    
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"style="width: 99%; margin: 3px"
+    onclick="initLevel(8)" id="button_restart">
+        Уровень 8
+    </button>
+    
+    
 </div>
 
 <div class = "card" id = "main_game" hidden>
@@ -90,6 +128,7 @@ canvas {
 </body>
 
 <script>
+var level = 0;
 var first_start = true;
 var pigBoost = 0;
 var score = 0;
@@ -102,7 +141,11 @@ var quests;
 var true_answer = -1;
 var random_quest_key = "";
 var random_quest_val = "";
-
+function initLevel(lvl)
+{
+	level = lvl;
+	startGame();
+}
 function startGame() {
 	score = 0;
 	
@@ -270,8 +313,13 @@ function getRandomInt(max) {
 function loadRandomQuest()
 {
     var answers_count = 4;
-    var random_quest = quests_list[getRandomInt(quests_list.length)];
-    console.log(quests_list);
+    var quest_iter = getRandomInt(500)+level*500;
+    while(quest_iter > quests_list.lenght)
+    {
+		quest_iter = (getRandomInt(500) + (level-1)*500)-500;
+	}
+	console.log(quest_iter, (level-1))
+    var random_quest = quests_list[quest_iter];
     true_answer = getRandomInt(4);
     for(var i = 0; i < answers_count; i+=1)
     {
