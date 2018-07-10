@@ -41,7 +41,7 @@
             <div class="card" id="img_menu" height="90%" width="90%">
                 <img src="main_menu.jpeg" height="75%" width="75%">
             </div>
-
+            <br>
             <div id="progress_bar_load_game" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
             <div id="div_level" hidden>
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="initLevel(1)" id="button_restart">
@@ -242,10 +242,7 @@
             }
         }
     }
-window.onload = function () { 
-    document.getElementById("progress_bar_load_game").hidden = true;
-    document.getElementById("div_level").hidden = false;
- }
+
     function updateGameArea() {
         petrAnimation();
         myGameArea.clear();
@@ -373,6 +370,10 @@ window.onload = function () {
             }
         }
     }
+    window.onload = function () { 
+        document.getElementById("progress_bar_load_game").hidden = true;
+        document.getElementById("div_level").hidden = false;
+     }
 </script>
 
 
