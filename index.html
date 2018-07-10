@@ -44,6 +44,10 @@
                 <br>
             </div>
             <div id="div_level" hidden>
+                <p id="p_language">Англо-русский</p>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="switch_language()" id="button_language">
+                    Смена языка
+                </button>
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="initLevel(1)" id="button_restart">
                     Уровень 1
                 </button>
@@ -134,6 +138,7 @@
     var canvas_width = 800;
     var canvas_height = 300;
     var quests;
+    var key_language = "eng";
     var true_answer = -1;
     var random_quest_key = "";
     var random_quest_val = "";
@@ -271,7 +276,19 @@
         myGamePiece.update();
         document.getElementById("text_view_score").innerHTML = score;
     }
-
+    function switch_language()
+    {
+        console.log(key_language);
+        if(key_language == "eng")
+        {
+            key_language = "rus";
+            document.getElementById("p_language").innerHTML = "Русско-английский"
+        }else
+        {
+            key_language = "eng";
+            document.getElementById("p_language").innerHTML = "Англо-русский"
+        }
+    }
     function preload() {
         for (var i = 0; i < arguments.length; i++) {
             images[i] = new Image();
@@ -356,8 +373,15 @@
         true_answer = getRandomInt(4);
         for (var i = 0; i < answers_count; i += 1) {
             if (i == true_answer) {
-                random_quest_key = random_quest.split("-")[0];
-                random_quest_val = random_quest.split("-")[1];
+                if(key_language == "eng")
+                {
+                    random_quest_key = random_quest.split("-")[0];
+                    random_quest_val = random_quest.split("-")[1];
+                }else
+                {
+                    random_quest_key = random_quest.split("-")[1];
+                    random_quest_val = random_quest.split("-")[0];
+                }
                 document.getElementById("text_view_quest").innerHTML = "<br>" + random_quest_key;
                 document.getElementById("button_answer_" + true_answer).innerHTML = random_quest_val;
             } else {
@@ -365,7 +389,13 @@
                 while (false_random_quest == random_quest) {
                     false_random_quest = quests_list[getRandomInt(quests_list.length)];
                 }
-                false_random_quest_val = false_random_quest.split("-")[1];
+                if(key_language == "eng")
+                {
+                    false_random_quest_val = false_random_quest.split("-")[1];
+                }else
+                {
+                    false_random_quest_val = false_random_quest.split("-")[0];
+                }
                 document.getElementById("button_answer_" + i).innerHTML = false_random_quest_val;
             }
         }
