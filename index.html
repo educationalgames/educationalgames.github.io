@@ -146,7 +146,7 @@
         document.getElementById("main_menu").hidden = true;
         document.getElementById("card_answer").hidden = false;
         document.getElementById("card_restart").hidden = true;
-        myGamePiece = new component(120, 120, "petr_animation/frame_0" + petrFrame + "_delay-0.01s.gif", canvas_width / 2 - 10, 170, "image");
+        myGamePiece = new component(120, 120, "frame_0" + petrFrame + "_delay-0.01s.gif", canvas_width / 2 - 10, 170, "image");
         myGameSay = new component(120, 120, "say.png", canvas_width / 2 - 110, 170, "image");
         myBackground = new component(canvas_width * 2, canvas_height, "background_krita.png", 0, 0, "background");
         text_view = new text();
@@ -271,9 +271,9 @@
     function petrAnimation() {
         console.log(petrFrame);
         if (petrFrame < 10) {
-            myGamePiece.image.src = "petr_animation/frame_0" + petrFrame + "_delay-0.01s.gif";
+            myGamePiece.image.src = "frame_0" + petrFrame + "_delay-0.01s.gif";
         } else {
-            myGamePiece.image.src = "petr_animation/frame_" + petrFrame + "_delay-0.01s.gif";
+            myGamePiece.image.src = "frame_" + petrFrame + "_delay-0.01s.gif";
         }
         petrFrame += 1;
         if (petrFrame > 24) {
