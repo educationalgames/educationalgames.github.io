@@ -268,13 +268,35 @@
         document.getElementById("text_view_score").innerHTML = score;
     }
 
-    function petrAnimation() {
-        console.log(petrFrame);
-        if (petrFrame < 10) {
-            myGamePiece.image.src = "frame_0" + petrFrame + "_delay-0.01s.gif";
-        } else {
-            myGamePiece.image.src = "frame_" + petrFrame + "_delay-0.01s.gif";
+    function preload() {
+        for (var i = 0; i < arguments.length; i++) {
+            images[i] = new Image();
+            images[i].src = preload.arguments[i];
         }
+    }
+    preloadPetrAnimationImages = [];
+    preloadPetrAnimation()
+    console.log("kek")
+    console.log(preloadPetrAnimationImages)
+    function preloadPetrAnimation()
+    {
+        for(var i = 0; i < 24; i++)
+        {
+            image = new Image();
+            if (i < 10) {
+                image.src = "frame_0" + i + "_delay-0.01s.gif";
+                preloadPetrAnimationImages.push(image);
+            } else {
+                image.src = "frame_" + i + "_delay-0.01s.gif";
+                preloadPetrAnimationImages.push(image);
+            }
+        }
+    }
+
+    function petrAnimation() {
+        if (petrFrame < 24) {
+            myGamePiece.image = preloadPetrAnimationImages[petrFrame];
+        } 
         petrFrame += 1;
         if (petrFrame > 24) {
             petrFrame = 0;
