@@ -282,6 +282,10 @@
     {
         for(var i = 0; i < 24; i++)
         {
+            if(i%2 == 0)
+            {
+                continue;
+            }
             image = new Image();
             if (i < 10) {
                 image.src = "petr_animation/frame_0" + i + "_delay-0.01s.gif";
@@ -294,11 +298,11 @@
     }
 
     function petrAnimation() {
-        if (petrFrame < 24) {
+        if (petrFrame < 11) {
             myGamePiece.image = preloadPetrAnimationImages[petrFrame];
         } 
         petrFrame += 1;
-        if (petrFrame > 24) {
+        if (petrFrame > 11) {
             petrFrame = 0;
         }
     }
