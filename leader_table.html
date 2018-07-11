@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	 <title>PigHighscores</title>
     <meta charset="UTF-8" />
 <style>
 table, th, td {
@@ -61,11 +62,12 @@ canvas {
 
 	function readLeaderable()
 	{
-       	for (var i = 0; i < document.getElementById("leaderTable").rows.length; i++) document.getElementById("leaderTable").deleteRow(0);
-		addRaw("username","level","score");
+       	
 		const feedRef = firebase.database().ref().child("leader_table");
   		var leaderList = [];
 		feedRef.on('value', (snapshot, error) => {
+			for (var i = 0; i < document.getElementById("leaderTable").rows.length; i++) document.getElementById("leaderTable").deleteRow(0);
+			addRaw("username","level","score");
 			snapshot.forEach((Snap) => {
 				console.log(Snap.val());
 				leaderList.push(Snap.val());
