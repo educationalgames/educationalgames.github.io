@@ -110,8 +110,13 @@
         <center>
             <p id="text_view_quest" style='text-align:center;font-size: 40px;font-family: "Courier New", cursive;'><br>ПОРОСЕНОК ПЕТР НЕ ДОЕХАЛ ДО ЗАПАДНОЙ ВИРДЖИНИИ((9(</p>
             <br>
-            <br>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="startGame()" id="button_restart">
+            <form action="#">
+              <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" id="input_name_leader">
+                <label class="mdl-textfield__label" for="sample1">%username%</label>
+              </div>
+            </form>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="restartGame()" id="button_restart">
                 Можем повторить!
             </button>
 
@@ -147,7 +152,24 @@
         level = lvl;
         startGame();
     }
+    function restartGame()
+    {
+        leader_name = document.getElementById("input_name_leader").value;
+        leader_score = score;
+        if(leader_name != "")
+        {
+            var request = new XMLHttpRequest();
+            request.addEventListener('load', doSomethingWithDataFromResponse);
+            request.open("GET","https://script.google.com/macros/s/AKfycbwO93PXsR0o1QLSUuoDLUW08PgSP2uafcWQrKMl-OMPtygG4WzG/exec?name="+leader_name+"&"+"score="+score+"&"+"level="+level);  
+            request.send();
 
+            function doSomethingWithDataFromResponse() {
+              var data = this.responseText;
+              console.log("Added by cloud msg")
+            }
+        }
+        startGame();
+    }
     function startGame() {
         score = 0;
 
