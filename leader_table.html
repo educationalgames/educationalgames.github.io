@@ -8,6 +8,7 @@
 <style>
 table, th, td {
     border: 1px solid black;
+	border-spacing: 0px 0px;
 }
 
 .card {
@@ -65,6 +66,7 @@ canvas {
        	
 		const feedRef = firebase.database().ref().child("leader_table");
   		var leaderList = [];
+		var lvl = -1;
 		feedRef.on('value', (snapshot, error) => {
 
 			snapshot.forEach((Snap) => {
@@ -73,13 +75,29 @@ canvas {
 			});
 			leaderList.sort(function(a, b) { 
 			    return b.score - a.score;
-			})
+			});
+			leaderList.sort(function(a, b) { 
+			    return b.level - a.level;
+			});
 			console.log(leaderList);
-			for (var i = 0; i < document.getElementById("leaderTable").rows.length; i++) document.getElementById("leaderTable").deleteRow(0);
+			for (var i = 0; i < document.getElementById("leaderTable").rows.length; i++) {
+				document.getElementById("leaderTable").deleteRow(0);
+			}
 			addRaw("username","level","score");
 			for(var i in leaderList)
 			{
+				if (lvl != leaderList[i].level){
+					lvl = leaderList[i].level;
+					var table = document.getElementById("leaderTable");
+					console.log(table)
+					var num_row = document.getElementById("leaderTable").rows.length;
+					var row = table.insertRow(num_row);
+					var cell = row.insertCell(0);
+					cell.colSpan = 3;
+					cell.innerHTML = "level "+lvl;
+				}
 				addRaw(leaderList[i].name, leaderList[i].level, leaderList[i].score)
+				
 			}
 			
 		});
