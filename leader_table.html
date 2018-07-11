@@ -66,8 +66,7 @@ canvas {
 		const feedRef = firebase.database().ref().child("leader_table");
   		var leaderList = [];
 		feedRef.on('value', (snapshot, error) => {
-			for (var i = 0; i < document.getElementById("leaderTable").rows.length; i++) document.getElementById("leaderTable").deleteRow(0);
-			addRaw("username","level","score");
+
 			snapshot.forEach((Snap) => {
 				console.log(Snap.val());
 				leaderList.push(Snap.val());
@@ -76,6 +75,8 @@ canvas {
 			    return b.score - a.score;
 			})
 			console.log(leaderList);
+			for (var i = 0; i < document.getElementById("leaderTable").rows.length; i++) document.getElementById("leaderTable").deleteRow(0);
+			addRaw("username","level","score");
 			for(var i in leaderList)
 			{
 				addRaw(leaderList[i].name, leaderList[i].level, leaderList[i].score)
