@@ -1,4 +1,4 @@
-quests_list = [
+var quests_list = [
 "well-Что ж",
 "only-только",
 "those-те",

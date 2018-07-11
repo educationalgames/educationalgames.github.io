@@ -106,6 +106,12 @@
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="answerClick(3)" id="button_answer_3">
             Поросёнок
         </button>
+        <div class="" id="card_fail_answer" hidden>
+			<br>
+            <p id="text_view_fail_answer" style='text-align:center;font-size: 30px;font-family: "Courier New", cursive;color:red;'>
+				<br>...</p>
+			<br>
+        </div>
     </div>
 
     <div class="card" id="card_restart" hidden>
@@ -145,9 +151,10 @@
     var quests;
     var key_language = "eng";
     var true_answer = -1;
+    var fail_time_counter = 0;
     var random_quest_key = "";
     var random_quest_val = "";
-
+	var myAudio = "";
     function initLevel(lvl) {
         level = lvl;
         startGame();
@@ -193,14 +200,15 @@
 
     }
 
-    function musicStart(track) {
+    function musicStart() {
         myAudio = new Audio('track0.ogg');
-
-        myAudio.addEventListener('ended', function() {
-            this.currentTime = 0;
-            this.play();
-        }, false);
+        var trackNum = getRandomInt(10)%3;
+        myAudio = new Audio('track'+trackNum+'.ogg');
         myAudio.play();
+        
+        myAudio.addEventListener('ended', function() {
+            musicStart();
+        }, false);
     }
     var myGameArea = {
         canvas: document.getElementById("canvas"),
@@ -277,7 +285,7 @@
         myGameArea.clear();
         myBackground.speedX = -2;
         if (pigBoost > 0) {
-            myGamePiece.speedX = 0.5;
+            myGamePiece.speedX = 0.2;
             pigBoost -= 1;
         }
 
@@ -287,7 +295,7 @@
         }
 
         if (pigBoost == 0) {
-            myGamePiece.speedX = -0.2;
+            myGamePiece.speedX = -0.1;
         }
         if (myGamePiece.x < -100) {
             document.getElementById("card_restart").hidden = false;
@@ -298,7 +306,18 @@
         myBackground.update();
         myGamePiece.newPos();
         myGamePiece.update();
+        
+        if(fail_time_counter > 0)
+        {
+			fail_time_counter-=1;
+			document.getElementById("text_view_score").style.color = "red";
+		}else
+		{
+			document.getElementById("text_view_score").style.color = "black";
+		}
         document.getElementById("text_view_score").innerHTML = score;
+        
+        
     }
 
     function switch_language() {
@@ -371,13 +390,17 @@
     function answerClick(button_id) {
         console.log(button_id);
         if (button_id == true_answer) {
-            pigBoost += 30;
+            pigBoost += 20;
             score += 1;
         } else {
-            alert(random_quest_val);
+            
+            score-=2;
+            fail_time_counter+=100;
             pigBoost -= 10;
         }
         loadRandomQuest()
+        
+        
     }
 
     function getRandomInt(max) {
@@ -386,11 +409,13 @@
 
     function loadRandomQuest() {
         var answers_count = 4;
-        var quest_iter = getRandomInt(500) + level * 500;
+        var num_quests = Math.round(quests_list.length/8)
+        var quest_iter = (getRandomInt(num_quests) + (level) * num_quests) - num_quests;
         while (quest_iter > quests_list.lenght) {
-            quest_iter = (getRandomInt(500) + (level - 1) * 500) - 500;
+            quest_iter = (getRandomInt(num_quests) + (level) * num_quests) - num_quests;
         }
         console.log(quest_iter, (level - 1))
+        
         var random_quest = quests_list[quest_iter];
         true_answer = getRandomInt(4);
         for (var i = 0; i < answers_count; i += 1) {
@@ -426,3 +451,4 @@
 
 
 </html>
+
