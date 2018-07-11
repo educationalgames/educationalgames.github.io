@@ -1,0 +1,100 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+
+.card {
+    box-shadow: 4px 4px 10px 4px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    margin: auto;
+    width: 70%;
+    height: 80%;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-bottom: 1px;
+}
+
+canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+</style>
+</head>
+<body>
+	<div class="card">
+		 <center>
+		 	<br>
+            <p id="text_view_quest" style='text-align:center;font-size: 40px;font-family: "Courier New", cursive;'>Highscores</p>
+         </center>
+<table id="leaderTable" class="mailing" width="100%" border="0"><col width=25%><col width=25%><col width=50%></table>
+</div>
+</table>
+</body>
+<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyATTo4A3NbDyduGuL_WLgOWdvrwjupD_xY",
+    authDomain: "educationalgames-efb3a.firebaseapp.com",
+    databaseURL: "https://educationalgames-efb3a.firebaseio.com",
+    projectId: "educationalgames-efb3a",
+    storageBucket: "educationalgames-efb3a.appspot.com",
+    messagingSenderId: "551257636820"
+  };
+  firebase.initializeApp(config);
+</script>
+<script type="text/javascript">
+
+	function readLeaderable()
+	{
+       	for (var i = 0; i < document.getElementById("leaderTable").rows.length; i++) document.getElementById("leaderTable").deleteRow(0);
+		addRaw("username","level","score");
+		const feedRef = firebase.database().ref().child("leader_table");
+  		var leaderList = [];
+		feedRef.on('value', (snapshot, error) => {
+			snapshot.forEach((Snap) => {
+				console.log(Snap.val());
+				leaderList.push(Snap.val());
+			});
+			leaderList.sort(function(a, b) { 
+			    return b.score - a.score;
+			})
+			console.log(leaderList);
+			for(var i in leaderList)
+			{
+				addRaw(leaderList[i].name, leaderList[i].level, leaderList[i].score)
+			}
+			
+		});
+	}
+	function addRaw(text1, text2, text3)
+	{
+	  var table = document.getElementById("leaderTable");
+	  console.log(table)
+	  var num_row = document.getElementById("leaderTable").rows.length;
+	  var row = table.insertRow(num_row);
+	  var cell1 = row.insertCell(0);
+	  var cell2 = row.insertCell(1);
+	  var cell3 = row.insertCell(2);
+	  cell1.innerHTML = text1;
+	  cell2.innerHTML = text2;
+	  cell3.innerHTML = text3;
+	}
+	addRaw("username","level","score");
+	readLeaderable();
+</script>
+</html>
