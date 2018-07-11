@@ -158,6 +158,8 @@
         if(leader_name != "")
         {
             var request = new XMLHttpRequest();
+            //Вот только не надо тут ничего хакерствовать, взламывать
+            //Играйте честно, все ж мы люди
             request.addEventListener('load', doSomethingWithDataFromResponse);
             request.open("GET","https://script.google.com/macros/s/AKfycbwO93PXsR0o1QLSUuoDLUW08PgSP2uafcWQrKMl-OMPtygG4WzG/exec?name="+leader_name+"&"+"score="+score+"&"+"level="+level);  
             request.send();
