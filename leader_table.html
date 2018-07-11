@@ -42,7 +42,7 @@ canvas {
 		 	<br>
             <p id="text_view_quest" style='text-align:center;font-size: 40px;font-family: "Courier New", cursive;'>Highscores</p>
          </center>
-<table id="leaderTable" class="mailing" width="100%" border="0"><col width=25%><col width=25%><col width=50%></table>
+<table id="leaderTable" class="mailing" width="100%" border="0"><col width=50%><col width=50%></table>
 </div>
 </table>
 </body>
@@ -83,7 +83,7 @@ canvas {
 			for (var i = 0; i < document.getElementById("leaderTable").rows.length; i++) {
 				document.getElementById("leaderTable").deleteRow(0);
 			}
-			addRaw("username","level","score");
+			addRaw("username","score");
 			for(var i in leaderList)
 			{
 				if (lvl != leaderList[i].level){
@@ -94,15 +94,15 @@ canvas {
 					var row = table.insertRow(num_row);
 					var cell = row.insertCell(0);
 					cell.colSpan = 3;
-					cell.innerHTML = "level "+lvl;
+					cell.innerHTML = "<br>LEVEL "+lvl+"";
 				}
-				addRaw(leaderList[i].name, leaderList[i].level, leaderList[i].score)
+				addRaw(leaderList[i].name,leaderList[i].score)
 				
 			}
 			
 		});
 	}
-	function addRaw(text1, text2, text3)
+	function addRaw(text1, text2)
 	{
 	  var table = document.getElementById("leaderTable");
 	  console.log(table)
@@ -110,10 +110,8 @@ canvas {
 	  var row = table.insertRow(num_row);
 	  var cell1 = row.insertCell(0);
 	  var cell2 = row.insertCell(1);
-	  var cell3 = row.insertCell(2);
 	  cell1.innerHTML = text1;
 	  cell2.innerHTML = text2;
-	  cell3.innerHTML = text3;
 	}
 	addRaw("username","level","score");
 	readLeaderable();

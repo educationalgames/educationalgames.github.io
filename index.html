@@ -80,8 +80,8 @@
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="initLevel(8)" id="button_restart">
                     Уровень 8
                 </button>
-                <a href="leader_table.html">Leader table</a> 
-        </div>
+                <a href="leader_table.html">Leader table</a>
+            </div>
 
 
     </div>
@@ -113,10 +113,10 @@
             <p id="text_view_quest" style='text-align:center;font-size: 40px;font-family: "Courier New", cursive;'><br>ПОРОСЕНОК ПЕТР НЕ ДОЕХАЛ ДО ЗАПАДНОЙ ВИРДЖИНИИ((9(</p>
             <br>
             <form action="#">
-              <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" id="input_name_leader">
-                <label class="mdl-textfield__label" for="sample1">%username%</label>
-              </div>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="input_name_leader">
+                    <label class="mdl-textfield__label" for="sample1">%username%</label>
+                </div>
             </form>
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="restartGame()" id="button_restart">
                 Можем повторить!
@@ -152,26 +152,26 @@
         level = lvl;
         startGame();
     }
-    function restartGame()
-    {
+
+    function restartGame() {
         leader_name = document.getElementById("input_name_leader").value;
         leader_score = score;
-        if(leader_name != "")
-        {
+        if (leader_name != "") {
             var request = new XMLHttpRequest();
             //Вот только не надо тут ничего хакерствовать, взламывать
             //Играйте честно, все ж мы люди
             request.addEventListener('load', doSomethingWithDataFromResponse);
-            request.open("GET","https://script.google.com/macros/s/AKfycbwO93PXsR0o1QLSUuoDLUW08PgSP2uafcWQrKMl-OMPtygG4WzG/exec?name="+leader_name+"&"+"score="+score+"&"+"level="+level);  
+            request.open("GET", "https://script.google.com/macros/s/AKfycbwO93PXsR0o1QLSUuoDLUW08PgSP2uafcWQrKMl-OMPtygG4WzG/exec?name=" + leader_name + "&" + "score=" + score + "&" + "level=" + level);
             request.send();
 
             function doSomethingWithDataFromResponse() {
-              var data = this.responseText;
-              console.log("Added by cloud msg")
+                var data = this.responseText;
+                console.log("Added by cloud msg")
             }
         }
         startGame();
     }
+
     function startGame() {
         score = 0;
 
@@ -300,19 +300,18 @@
         myGamePiece.update();
         document.getElementById("text_view_score").innerHTML = score;
     }
-    function switch_language()
-    {
+
+    function switch_language() {
         console.log(key_language);
-        if(key_language == "eng")
-        {
+        if (key_language == "eng") {
             key_language = "rus";
             document.getElementById("p_language").innerHTML = "Русско-английский"
-        }else
-        {
+        } else {
             key_language = "eng";
             document.getElementById("p_language").innerHTML = "Англо-русский"
         }
     }
+
     function preload() {
         for (var i = 0; i < arguments.length; i++) {
             images[i] = new Image();
@@ -323,10 +322,9 @@
     preloadPetrAnimation()
     console.log("kek")
     console.log(preloadPetrAnimationImages)
-    function preloadPetrAnimation()
-    {
-        for(var i = 0; i < 24; i++)
-        {
+
+    function preloadPetrAnimation() {
+        for (var i = 0; i < 24; i++) {
             image = new Image();
             if (i < 10) {
                 image.src = "petr_animation/frame_0" + i + "_delay-0.01s.gif";
@@ -341,7 +339,7 @@
     function petrAnimation() {
         if (petrFrame < 24) {
             myGamePiece.image = preloadPetrAnimationImages[petrFrame];
-        } 
+        }
         petrFrame += 1;
         if (petrFrame > 23) {
             petrFrame = 0;
@@ -397,12 +395,10 @@
         true_answer = getRandomInt(4);
         for (var i = 0; i < answers_count; i += 1) {
             if (i == true_answer) {
-                if(key_language == "eng")
-                {
+                if (key_language == "eng") {
                     random_quest_key = random_quest.split("-")[0];
                     random_quest_val = random_quest.split("-")[1];
-                }else
-                {
+                } else {
                     random_quest_key = random_quest.split("-")[1];
                     random_quest_val = random_quest.split("-")[0];
                 }
@@ -413,21 +409,19 @@
                 while (false_random_quest == random_quest) {
                     false_random_quest = quests_list[getRandomInt(quests_list.length)];
                 }
-                if(key_language == "eng")
-                {
+                if (key_language == "eng") {
                     false_random_quest_val = false_random_quest.split("-")[1];
-                }else
-                {
+                } else {
                     false_random_quest_val = false_random_quest.split("-")[0];
                 }
                 document.getElementById("button_answer_" + i).innerHTML = false_random_quest_val;
             }
         }
     }
-    window.onload = function () { 
+    window.onload = function() {
         document.getElementById("progress_bar_load_game").innerHTML = "";
         document.getElementById("div_level").hidden = false;
-     }
+    }
 </script>
 
 
