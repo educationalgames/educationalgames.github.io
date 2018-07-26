@@ -63,7 +63,7 @@ canvas {
 
 	function readLeaderable()
 	{
-       	
+       	var last_name = "";
 		const feedRef = firebase.database().ref().child("leader_table");
   		var leaderList = [];
 		var lvl = -1;
@@ -96,7 +96,11 @@ canvas {
 					cell.colSpan = 3;
 					cell.innerHTML = "<br>LEVEL "+lvl+"";
 				}
-				addRaw(leaderList[i].name,leaderList[i].score)
+				if(last_name != leaderList[i].name)
+				{
+					addRaw(leaderList[i].name,leaderList[i].score);
+					last_name = leaderList[i].name
+				}
 				
 			}
 			
