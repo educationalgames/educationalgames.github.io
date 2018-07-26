@@ -39,13 +39,18 @@
 
     <div class="card" id="main_menu">
         <center>
-            <div class="card" id="img_menu" height="90%" width="90%">
-                <img src="main_menu.jpeg" height="75%" width="75%">
+                <img src="main_menu_cities_extended.jpeg" height="75%" width="75%">
                 <div id="progress_bar_load_game">...PLEASE STAND BY...<br>...ПОДОЖДИТЕ, ПОЖАЛУЙСТА...</div>
                 <br>
-            </div>
             <div id="div_level" hidden>
+				<form action="#">
+					<div class="mdl-textfield mdl-js-textfield">
+						<input class="mdl-textfield__input" type="text" id="input_name_leader">
+						<label class="mdl-textfield__label" for="sample1">%Ваше имя%</label>
+					</div>
+				</form>
                 <p id="p_language">Англо-русский</p>
+           
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="switch_language()" id="button_language">
                     Смена языка
                 </button>
@@ -118,14 +123,6 @@
         <center>
             <p id="text_view_quest" style='text-align:center;font-size: 35px;font-family: "Courier New", cursive;'><br>ПОРОСЕНОК ПЕТР НЕ ДОЕХАЛ ДО ЗАПАДНОЙ ВИРДЖИНИИ((9(</p>
             <br>
-            Как звать?
-            <form action="#">
-                <div class="mdl-textfield mdl-js-textfield">
-					
-                    <input class="mdl-textfield__input" type="text" id="input_name_leader">
-                    <label class="mdl-textfield__label" for="sample1">%username%</label>
-                </div>
-            </form>
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="restartGame()" id="button_restart">
                 Можем повторить!
             </button>
@@ -146,6 +143,7 @@
     var petrFrame = 0;
     var score = 0;
     var myGamePiece;
+    var flag_send_score = 0;
     var myBackground;
     var text_view;
     var canvas_width = 800;
@@ -163,34 +161,36 @@
     }
 
     function restartGame() {
-        leader_name = document.getElementById("input_name_leader").value;
-        leader_score = score;
-        if (leader_name != "") {
-            var request = new XMLHttpRequest();
-            //Вот только не надо тут ничего хакерствовать, взламывать
-            //Играйте честно, все ж мы люди
-            request.addEventListener('load', doSomethingWithDataFromResponse);
-            request.open("GET", "https://script.google.com/macros/s/AKfycbwO93PXsR0o1QLSUuoDLUW08PgSP2uafcWQrKMl-OMPtygG4WzG/exec?name=" + leader_name + "&" + "score=" + score + "&" + "level=" + level);
-            request.send();
-
-            function doSomethingWithDataFromResponse() {
-                var data = this.responseText;
-                console.log("Added by cloud msg")
-            }
-        }
+        
         startGame();
     }
 
     function startGame() {
         score = 0;
-
+        flag_send_score = 0;
+		var leader_name = document.getElementById("input_name_leader").value;
+		if(leader_name == "")
+		{
+			alert("Введите имя");
+			return 0;
+		}
         document.getElementById("main_game").hidden = false;
         document.getElementById("main_menu").hidden = true;
         document.getElementById("card_answer").hidden = false;
         document.getElementById("card_restart").hidden = true;
         myGamePiece = new component(120, 120, "frame_0" + petrFrame + "_delay-0.01s.gif", canvas_width / 2 - 10, 170, "image");
         myGameSay = new component(120, 120, "say.png", canvas_width / 2 - 110, 170, "image");
-        myBackground = new component(canvas_width * 2, canvas_height, "background_krita.png", 0, 0, "background");
+        
+        var background_id = getRandomInt(100)%7;
+        var background = ""; 
+        if(background_id == 0)background = "krita/greenland.png";
+        if(background_id == 1)background = "krita/novosibirsk2039.png";
+        if(background_id == 2)background = "krita/novosibirsk2038.png";
+        if(background_id == 3)background = "krita/village1.png";
+        if(background_id == 4)background = "krita/countyroads.png";
+        if(background_id == 5)background = "krita/moscow2038.png";
+        if(background_id == 6)background = "krita/photorealism.jpg";
+        myBackground = new component(canvas_width * 2, canvas_height, background, 0, 0, "background");
         text_view = new text();
         loadRandomQuest();
         if (first_start) {
@@ -203,9 +203,9 @@
     }
 
     function musicStart() {
-        myAudio = new Audio('track0.ogg');
+        myAudio = new Audio('music/track0.ogg');
         var trackNum = getRandomInt(12)%6;
-        myAudio = new Audio('track'+trackNum+'.ogg');
+        myAudio = new Audio('music/track'+trackNum+'.ogg');
         myAudio.play();
         
         myAudio.addEventListener('ended', function() {
@@ -303,6 +303,26 @@
             document.getElementById("card_restart").hidden = false;
             document.getElementById("card_answer").hidden = true;
             document.getElementById("main_game").hidden = true;
+            if(flag_send_score == 0)
+            {
+				flag_send_score = 1;
+				leader_name = document.getElementById("input_name_leader").value;
+				leader_score = score;
+				if (leader_name != "") {
+					var request = new XMLHttpRequest();
+					//Вот только не надо тут ничего хакерствовать, взламывать
+					//Играйте честно, все ж мы люди
+					request.addEventListener('load', doSomethingWithDataFromResponse);
+					request.open("GET", "https://script.google.com/macros/s/AKfycbwO93PXsR0o1QLSUuoDLUW08PgSP2uafcWQrKMl-OMPtygG4WzG/exec?name=" + leader_name + "&" + "score=" + score + "&" + "level=" + level);
+					request.send();
+
+					function doSomethingWithDataFromResponse() {
+						var data = this.responseText;
+						console.log("Added by cloud msg")
+					}
+				}
+			}
+            
         }
         myBackground.newPos();
         myBackground.update();
