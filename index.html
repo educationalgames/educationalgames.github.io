@@ -6,16 +6,16 @@
 <script defer src="quests.js"></script>
 
 <head>
-    <title>PigGame: learn english онлайн</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-        .card {
+  <title>PigGame: learn english онлайн</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    .card {
             box-shadow: 4px 4px 10px 4px rgba(0, 0, 0, 0.2);
             transition: 0.3s;
             border-radius: 5px;
             margin: auto;
-            width: 80%;
+            width: 90%;
             padding-left: 0;
             padding-right: 0;
             margin-left: auto;
@@ -26,7 +26,7 @@
         }
 		body {
 			background-color: white;
-			
+
 		}
         canvas {
             padding-left: 0;
@@ -40,65 +40,65 @@
 
 <body onload="startGame2()">
 
-    <div class="card" id="main_menu">
-        <center>
-                <img src="main_menu_cities_extended.jpeg" height="75%" width="100%">
-                <div id="progress_bar_load_game">...PLEASE STAND BY...<br>...ПОДОЖДИТЕ, ПОЖАЛУЙСТА...</div>
-                <br>
-            <div id="div_level" hidden>
-				<form action="#">
-					<div class="mdl-textfield mdl-js-textfield">
-						<input class="mdl-textfield__input" type="text" id="input_name_leader">
-						<label class="mdl-textfield__label" for="sample1">%Ваше имя%</label>
-					</div>
-				</form>
-                <p id="p_language">Англо-русский</p>
-           
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="switch_language()" id="button_language">
+  <div class="card" id="main_menu">
+    <center>
+      <img src="main_menu.jpeg" height="75%" width="100%">
+      <div id="progress_bar_load_game">...PLEASE STAND BY...<br>...ПОДОЖДИТЕ, ПОЖАЛУЙСТА...</div>
+        <br>
+        <div id="div_level" hidden>
+          <form action="#">
+            <div class="mdl-textfield mdl-js-textfield">
+              <input class="mdl-textfield__input" type="text" id="input_name_leader">
+              <label class="mdl-textfield__label" for="sample1">%Ваше имя%</label>
+            </div>
+          </form>
+          <p id="p_language">Англо-русский</p>
+
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="switch_language()" id="button_language">
                     Смена языка
                 </button>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="initLevel(1)" id="button_restart">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="initLevel(1)" id="button_restart">
                     Уровень 1
                 </button>
 
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="initLevel(2)" id="button_restart">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="initLevel(2)" id="button_restart">
                     Уровень 2
                 </button>
 
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="initLevel(3)" id="button_restart">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="initLevel(3)" id="button_restart">
                     Уровень 3
                 </button>
 
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="initLevel(4)" id="button_restart">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="initLevel(4)" id="button_restart">
                     Уровень 4
                 </button>
 
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="initLevel(5)" id="button_restart">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="initLevel(5)" id="button_restart">
                     Уровень 5
                 </button>
 
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="initLevel(6)" id="button_restart">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="initLevel(6)" id="button_restart">
                     Уровень 6
                 </button>
 
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="initLevel(7)" id="button_restart">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="initLevel(7)" id="button_restart">
                     Уровень 7
                 </button>
 
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="initLevel(8)" id="button_restart">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="initLevel(8)" id="button_restart">
                     Уровень 8
                 </button>
-                <a href="leader_table.html">Leader table</a>
-            </div>
+          <a href="leader_table.html">Leader table</a>
+        </div>
 
 
-    </div>
+      </div>
 
-    <div class="card" id="main_game" hidden>
+      <div class="card" id="main_game" hidden>
         <canvas id="canvas" class="card" width="150" height="100"></canvas>
         <br>
         <div class="" id="card_answer">
-            <p id="text_view_quest" align="center" style='text-align:center;font-size: 40px;font-family: "Courier New", cursive;'><br>Grunter</p>
+          <p id="text_view_quest" align="center" style='text-align:center;font-size: 40px;font-family: "Courier New", cursive;'><br>Grunter</p>
             <p align="right" style='text-align:right;font-size: 30px;font-family: "Courier New", cursive;' id="text_view_score">0</p>
         </div>
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="answerClick(0)" id="button_answer_0">
@@ -115,24 +115,24 @@
             Поросёнок
         </button>
         <div class="" id="card_fail_answer" hidden>
-			<br>
-            <p id="text_view_fail_answer" style='text-align:center;font-size: 30px;font-family: "Courier New", cursive;color:red;'>
-				<br>...</p>
-			<br>
-        </div>
-    </div>
-
-    <div class="card" id="card_restart" hidden>
-        <center>
-            <p id="text_view_quest" style='text-align:center;font-size: 35px;font-family: "Courier New", cursive;'><br>ПОРОСЕНОК ПЕТР НЕ ДОЕХАЛ ДО ЗАПАДНОЙ ВИРДЖИНИИ((9(</p>
+          <br>
+          <p id="text_view_fail_answer" style='text-align:center;font-size: 30px;font-family: "Courier New", cursive;color:red;'>
+            <br>...</p>
             <br>
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="restartGame()" id="button_restart">
+        </div>
+        </div>
+
+        <div class="card" id="card_restart" hidden>
+          <center>
+            <p id="text_view_quest" style='text-align:center;font-size: 35px;font-family: "Courier New", cursive;'><br>ПОРОСЕНОК ПЕТР НЕ ДОЕХАЛ ДО ЗАПАДНОЙ ВИРДЖИНИИ((9(</p>
+              <br>
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="width: 99%; margin: 3px" onclick="restartGame()" id="button_restart">
                 Можем повторить!
             </button>
-        </center>
-    </div>
+          </center>
+        </div>
 
-    </div>
+      </div>
 
 
 
@@ -140,340 +140,336 @@
 </body>
 
 <script>
-    var level = 0;
-    var first_start = true;
-    var pigBoost = 0;
-    var petrFrame = 0;
-    var score = 0;
-    var myGamePiece;
-    var flag_send_score = 0;
-    var myBackground;
-    var text_view;
-    var canvas_width = 800;
-    var canvas_height = 300;
-    var quests;
-    var key_language = "eng";
-    var true_answer = -1;
-    var fail_time_counter = 0;
-    var random_quest_key = "";
-    var random_quest_val = "";
-	var myAudio = "";
-    function initLevel(lvl) {
-        level = lvl;
-        startGame();
+  var level = 0;
+  var first_start = true;
+  var pigBoost = 0;
+  var petrFrame = 0;
+  var score = 0;
+  var myGamePiece;
+  var flag_send_score = 0;
+  var myBackground;
+  var text_view;
+  var canvas_width = 800;
+  var canvas_height = 300;
+  var quests;
+  var key_language = "eng";
+  var true_answer = -1;
+  var fail_time_counter = 0;
+  var random_quest_key = "";
+  var random_quest_val = "";
+  var myAudio = "";
+
+  function initLevel(lvl) {
+    level = lvl;
+    startGame();
+  }
+
+  function restartGame() {
+
+    startGame();
+  }
+
+  function startGame() {
+    score = 0;
+    flag_send_score = 0;
+    var leader_name = document.getElementById("input_name_leader").value;
+    if (leader_name == "") {
+      alert("Введите имя");
+      return 0;
+    }
+    document.getElementById("main_game").hidden = false;
+    document.getElementById("main_menu").hidden = true;
+    document.getElementById("card_answer").hidden = false;
+    document.getElementById("card_restart").hidden = true;
+    myGamePiece = new component(120, 120, "frame_0" + petrFrame + "_delay-0.01s.gif", canvas_width / 2 - 10, 170, "image");
+    myGameSay = new component(120, 120, "say.png", canvas_width / 2 - 110, 170, "image");
+
+    var background_id = getRandomInt(100) % 7;
+    var background = "";
+    if (background_id == 0) background = "backgrounds/countyroads.png";
+    if (background_id == 1) background = "backgrounds/novosibirsk2039.png";
+    if (background_id == 2) background = "backgrounds/novosibirsk2038.png";
+    if (background_id == 3) background = "backgrounds/village1.png";
+    if (background_id == 4) background = "backgrounds/countyroads.png";
+    if (background_id == 5) background = "backgrounds/moscow2038.png";
+    if (background_id == 6) background = "backgrounds/photorealism.jpg";
+    myBackground = new component(canvas_width * 2, canvas_height, background, 0, 0, "background");
+    text_view = new text();
+    loadRandomQuest();
+    if (first_start) {
+      myGameArea.start('track0.ogg');
+      musicStart();
+    }
+    first_start = false;
+
+  }
+
+  function musicStart() {
+    myAudio = new Audio('music/track0.ogg');
+    var trackNum = getRandomInt(12) % 6;
+    trackNum = 0;
+    myAudio = new Audio('music/track' + trackNum + '.ogg');
+    myAudio.play();
+
+    myAudio.addEventListener('ended', function() {
+      musicStart();
+    }, false);
+  }
+  var myGameArea = {
+    canvas: document.getElementById("canvas"),
+    start: function() {
+      this.canvas.width = canvas_width;
+      this.canvas.height = canvas_height;
+      this.context = this.canvas.getContext("2d");
+      document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+      this.frameNo = 0;
+      this.interval = setInterval(updateGameArea, 20);
+    },
+    clear: function() {
+      this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    },
+    stop: function() {
+      clearInterval(this.interval);
+    }
+  }
+
+  function text() {
+    console.log(myGameArea)
+    this.update = function() {
+
+    }
+  }
+
+  function component(width, height, color, x, y, type) {
+    this.type = type;
+    if (type == "image" || type == "background" || type == "pig") {
+      this.image = new Image();
+      this.image.src = color;
+    }
+    this.width = width;
+    this.height = height;
+    this.speedX = 0;
+    this.speedY = 0;
+    this.x = x;
+    this.y = y;
+    this.update = function() {
+      ctx = myGameArea.context;
+      //Проверяем, объект это или нет
+      if (type == "image" || type == "background") {
+        ctx.drawImage(this.image,
+          this.x,
+          this.y,
+          this.width, this.height);
+        if (type == "background") {
+          ctx.drawImage(this.image,
+            this.x + this.width,
+            this.y,
+            this.width, this.height);
+
+        }
+      } else {
+        console.log(type)
+        ctx.fillStyle = color;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+      }
+
+    }
+    this.newPos = function() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      if (this.type == "background") {
+        if (this.x == -(this.width)) {
+          this.x = 0;
+        }
+      }
+    }
+  }
+
+  function updateGameArea() {
+    petrAnimation();
+    myGameArea.clear();
+    myBackground.speedX = -2;
+    if (pigBoost > 0) {
+      myGamePiece.speedX = 0.2;
+      pigBoost -= 1;
     }
 
-    function restartGame() {
-        
-        startGame();
+    if (pigBoost < 0) {
+      myGamePiece.speedX = -0.5;
+      pigBoost += 1;
     }
 
-    function startGame() {
-        score = 0;
-        flag_send_score = 0;
-		var leader_name = document.getElementById("input_name_leader").value;
-		if(leader_name == "")
-		{
-			alert("Введите имя");
-			return 0;
-		}
-        document.getElementById("main_game").hidden = false;
-        document.getElementById("main_menu").hidden = true;
-        document.getElementById("card_answer").hidden = false;
-        document.getElementById("card_restart").hidden = true;
-        myGamePiece = new component(120, 120, "frame_0" + petrFrame + "_delay-0.01s.gif", canvas_width / 2 - 10, 170, "image");
-        myGameSay = new component(120, 120, "say.png", canvas_width / 2 - 110, 170, "image");
-        
-        var background_id = getRandomInt(100)%7;
-        var background = ""; 
-        if(background_id == 0)background = "krita/countyroads.png";
-        if(background_id == 1)background = "krita/novosibirsk2039.png";
-        if(background_id == 2)background = "krita/novosibirsk2038.png";
-        if(background_id == 3)background = "krita/village1.png";
-        if(background_id == 4)background = "krita/countyroads.png";
-        if(background_id == 5)background = "krita/moscow2038.png";
-        if(background_id == 6)background = "krita/photorealism.jpg";
-        myBackground = new component(canvas_width * 2, canvas_height, background, 0, 0, "background");
-        text_view = new text();
-        loadRandomQuest();
-        if (first_start) {
+    if (pigBoost == 0) {
+      myGamePiece.speedX = -0.1;
+    }
+    if (myGamePiece.x < -100) {
+      document.getElementById("card_restart").hidden = false;
+      document.getElementById("card_answer").hidden = true;
+      document.getElementById("main_game").hidden = true;
+      if (flag_send_score == 0) {
+        flag_send_score = 1;
+        leader_name = document.getElementById("input_name_leader").value;
+        leader_score = score;
+        if (leader_name != "") {
+          var request = new XMLHttpRequest();
+          //Вот только не надо тут ничего хакерствовать, взламывать
+          //Играйте честно, все ж мы люди
+          request.addEventListener('load', doSomethingWithDataFromResponse);
+          request.open("GET", "https://script.google.com/macros/s/AKfycbwO93PXsR0o1QLSUuoDLUW08PgSP2uafcWQrKMl-OMPtygG4WzG/exec?name=" + leader_name + "&" + "score=" + score + "&" + "level=" + level);
+          request.send();
 
-            myGameArea.start('track0.ogg');
-            musicStart();
+          function doSomethingWithDataFromResponse() {
+            var data = this.responseText;
+            console.log("Added by cloud msg")
+          }
         }
-        first_start = false;
+      }
 
     }
+    myBackground.newPos();
+    myBackground.update();
+    myGamePiece.newPos();
+    myGamePiece.update();
 
-    function musicStart() {
-        myAudio = new Audio('music/track0.ogg');
-        var trackNum = getRandomInt(12)%6;
-        myAudio = new Audio('music/track'+trackNum+'.ogg');
-        myAudio.play();
-        
-        myAudio.addEventListener('ended', function() {
-            musicStart();
-        }, false);
+    if (fail_time_counter > 0) {
+      fail_time_counter -= 1;
+      document.getElementById("text_view_score").style.color = "red";
+    } else {
+      document.getElementById("text_view_score").style.color = "black";
     }
-    var myGameArea = {
-        canvas: document.getElementById("canvas"),
-        start: function() {
-            this.canvas.width = canvas_width;
-            this.canvas.height = canvas_height;
-            this.context = this.canvas.getContext("2d");
-            document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-            this.frameNo = 0;
-            this.interval = setInterval(updateGameArea, 20);
-        },
-        clear: function() {
-            this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        },
-        stop: function() {
-            clearInterval(this.interval);
-        }
+    document.getElementById("text_view_score").innerHTML = score;
+
+
+  }
+
+  function switch_language() {
+    console.log(key_language);
+    if (key_language == "eng") {
+      key_language = "rus";
+      document.getElementById("p_language").innerHTML = "Русско-английский"
+    } else {
+      key_language = "eng";
+      document.getElementById("p_language").innerHTML = "Англо-русский"
     }
+  }
 
-    function text() {
-        console.log(myGameArea)
-        this.update = function() {
-
-        }
+  function preload() {
+    for (var i = 0; i < arguments.length; i++) {
+      images[i] = new Image();
+      images[i].src = preload.arguments[i];
     }
+  }
+  preloadPetrAnimationImages = [];
+  preloadPetrAnimation()
+  console.log("kek")
+  console.log(preloadPetrAnimationImages)
 
-    function component(width, height, color, x, y, type) {
-        this.type = type;
-        if (type == "image" || type == "background" || type == "pig") {
-            this.image = new Image();
-            this.image.src = color;
-        }
-        this.width = width;
-        this.height = height;
-        this.speedX = 0;
-        this.speedY = 0;
-        this.x = x;
-        this.y = y;
-        this.update = function() {
-            ctx = myGameArea.context;
-            //Проверяем, объект это или нет
-            if (type == "image" || type == "background") {
-                ctx.drawImage(this.image,
-                    this.x,
-                    this.y,
-                    this.width, this.height);
-                if (type == "background") {
-                    ctx.drawImage(this.image,
-                        this.x + this.width,
-                        this.y,
-                        this.width, this.height);
-
-                }
-            } else {
-                console.log(type)
-                ctx.fillStyle = color;
-                ctx.fillRect(this.x, this.y, this.width, this.height);
-            }
-
-        }
-        this.newPos = function() {
-            this.x += this.speedX;
-            this.y += this.speedY;
-            if (this.type == "background") {
-                if (this.x == -(this.width)) {
-                    this.x = 0;
-                }
-            }
-        }
+  function preloadPetrAnimation() {
+    for (var i = 0; i < 24; i++) {
+      image = new Image();
+      if (i < 10) {
+        image.src = "petr_sprites/frame_0" + i + "_delay-0.01s.gif";
+        preloadPetrAnimationImages.push(image);
+      } else {
+        image.src = "petr_sprites/frame_" + i + "_delay-0.01s.gif";
+        preloadPetrAnimationImages.push(image);
+      }
     }
+  }
 
-    function updateGameArea() {
-        petrAnimation();
-        myGameArea.clear();
-        myBackground.speedX = -2;
-        if (pigBoost > 0) {
-            myGamePiece.speedX = 0.2;
-            pigBoost -= 1;
-        }
-
-        if (pigBoost < 0) {
-            myGamePiece.speedX = -0.5;
-            pigBoost += 1;
-        }
-
-        if (pigBoost == 0) {
-            myGamePiece.speedX = -0.1;
-        }
-        if (myGamePiece.x < -100) {
-            document.getElementById("card_restart").hidden = false;
-            document.getElementById("card_answer").hidden = true;
-            document.getElementById("main_game").hidden = true;
-            if(flag_send_score == 0)
-            {
-				flag_send_score = 1;
-				leader_name = document.getElementById("input_name_leader").value;
-				leader_score = score;
-				if (leader_name != "") {
-					var request = new XMLHttpRequest();
-					//Вот только не надо тут ничего хакерствовать, взламывать
-					//Играйте честно, все ж мы люди
-					request.addEventListener('load', doSomethingWithDataFromResponse);
-					request.open("GET", "https://script.google.com/macros/s/AKfycbwO93PXsR0o1QLSUuoDLUW08PgSP2uafcWQrKMl-OMPtygG4WzG/exec?name=" + leader_name + "&" + "score=" + score + "&" + "level=" + level);
-					request.send();
-
-					function doSomethingWithDataFromResponse() {
-						var data = this.responseText;
-						console.log("Added by cloud msg")
-					}
-				}
-			}
-            
-        }
-        myBackground.newPos();
-        myBackground.update();
-        myGamePiece.newPos();
-        myGamePiece.update();
-        
-        if(fail_time_counter > 0)
-        {
-			fail_time_counter-=1;
-			document.getElementById("text_view_score").style.color = "red";
-		}else
-		{
-			document.getElementById("text_view_score").style.color = "black";
-		}
-        document.getElementById("text_view_score").innerHTML = score;
-        
-        
+  function petrAnimation() {
+    if (petrFrame < 24) {
+      myGamePiece.image = preloadPetrAnimationImages[petrFrame];
     }
+    petrFrame += 1;
+    if (petrFrame > 23) {
+      petrFrame = 0;
+    }
+  }
 
-    function switch_language() {
-        console.log(key_language);
+  function move(dir) {
+
+    if (dir == "up") {
+      myGamePiece.speedY = -1;
+    }
+    if (dir == "down") {
+      myGamePiece.speedY = 1;
+    }
+    if (dir == "left") {
+      myGamePiece.speedX = -1;
+    }
+    if (dir == "right") {
+      myGamePiece.speedX = 1;
+    }
+  }
+
+  function clearmove() {
+    myGamePiece.image.src = "petr_sprite.png";
+    myGamePiece.speedX = 0;
+    myGamePiece.speedY = 0;
+  }
+
+  function answerClick(button_id) {
+    console.log(button_id);
+    if (button_id == true_answer) {
+      pigBoost += 20;
+      score += 1;
+    } else {
+
+      score -= 2;
+      fail_time_counter += 100;
+      pigBoost -= 10;
+    }
+    loadRandomQuest()
+
+
+  }
+
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
+  function loadRandomQuest() {
+    var answers_count = 4;
+    var num_quests = Math.round(quests_list.length / 8)
+    var quest_iter = (getRandomInt(num_quests) + (level) * num_quests) - num_quests;
+    while (quest_iter > quests_list.lenght) {
+      quest_iter = (getRandomInt(num_quests) + (level) * num_quests) - num_quests;
+    }
+    console.log(quest_iter, (level - 1))
+
+    var random_quest = quests_list[quest_iter];
+    true_answer = getRandomInt(4);
+    for (var i = 0; i < answers_count; i += 1) {
+      if (i == true_answer) {
         if (key_language == "eng") {
-            key_language = "rus";
-            document.getElementById("p_language").innerHTML = "Русско-английский"
+          random_quest_key = random_quest.split("-")[0];
+          random_quest_val = random_quest.split("-")[1];
         } else {
-            key_language = "eng";
-            document.getElementById("p_language").innerHTML = "Англо-русский"
+          random_quest_key = random_quest.split("-")[1];
+          random_quest_val = random_quest.split("-")[0];
         }
-    }
-
-    function preload() {
-        for (var i = 0; i < arguments.length; i++) {
-            images[i] = new Image();
-            images[i].src = preload.arguments[i];
+        document.getElementById("text_view_quest").innerHTML = "<br>" + random_quest_key;
+        document.getElementById("button_answer_" + true_answer).innerHTML = random_quest_val;
+      } else {
+        var false_random_quest = quests_list[getRandomInt(quests_list.length)];
+        while (false_random_quest == random_quest) {
+          false_random_quest = quests_list[getRandomInt(quests_list.length)];
         }
-    }
-    preloadPetrAnimationImages = [];
-    preloadPetrAnimation()
-    console.log("kek")
-    console.log(preloadPetrAnimationImages)
-
-    function preloadPetrAnimation() {
-        for (var i = 0; i < 24; i++) {
-            image = new Image();
-            if (i < 10) {
-                image.src = "petr_animation/frame_0" + i + "_delay-0.01s.gif";
-                preloadPetrAnimationImages.push(image);
-            } else {
-                image.src = "petr_animation/frame_" + i + "_delay-0.01s.gif";
-                preloadPetrAnimationImages.push(image);
-            }
-        }
-    }
-
-    function petrAnimation() {
-        if (petrFrame < 24) {
-            myGamePiece.image = preloadPetrAnimationImages[petrFrame];
-        }
-        petrFrame += 1;
-        if (petrFrame > 23) {
-            petrFrame = 0;
-        }
-    }
-
-    function move(dir) {
-
-        if (dir == "up") {
-            myGamePiece.speedY = -1;
-        }
-        if (dir == "down") {
-            myGamePiece.speedY = 1;
-        }
-        if (dir == "left") {
-            myGamePiece.speedX = -1;
-        }
-        if (dir == "right") {
-            myGamePiece.speedX = 1;
-        }
-    }
-
-    function clearmove() {
-        myGamePiece.image.src = "petr_sprite.png";
-        myGamePiece.speedX = 0;
-        myGamePiece.speedY = 0;
-    }
-
-    function answerClick(button_id) {
-        console.log(button_id);
-        if (button_id == true_answer) {
-            pigBoost += 20;
-            score += 1;
+        if (key_language == "eng") {
+          false_random_quest_val = false_random_quest.split("-")[1];
         } else {
-            
-            score-=2;
-            fail_time_counter+=100;
-            pigBoost -= 10;
+          false_random_quest_val = false_random_quest.split("-")[0];
         }
-        loadRandomQuest()
-        
-        
+        document.getElementById("button_answer_" + i).innerHTML = false_random_quest_val;
+      }
     }
-
-    function getRandomInt(max) {
-        return Math.floor(Math.random() * Math.floor(max));
-    }
-
-    function loadRandomQuest() {
-        var answers_count = 4;
-        var num_quests = Math.round(quests_list.length/8)
-        var quest_iter = (getRandomInt(num_quests) + (level) * num_quests) - num_quests;
-        while (quest_iter > quests_list.lenght) {
-            quest_iter = (getRandomInt(num_quests) + (level) * num_quests) - num_quests;
-        }
-        console.log(quest_iter, (level - 1))
-        
-        var random_quest = quests_list[quest_iter];
-        true_answer = getRandomInt(4);
-        for (var i = 0; i < answers_count; i += 1) {
-            if (i == true_answer) {
-                if (key_language == "eng") {
-                    random_quest_key = random_quest.split("-")[0];
-                    random_quest_val = random_quest.split("-")[1];
-                } else {
-                    random_quest_key = random_quest.split("-")[1];
-                    random_quest_val = random_quest.split("-")[0];
-                }
-                document.getElementById("text_view_quest").innerHTML = "<br>" + random_quest_key;
-                document.getElementById("button_answer_" + true_answer).innerHTML = random_quest_val;
-            } else {
-                var false_random_quest = quests_list[getRandomInt(quests_list.length)];
-                while (false_random_quest == random_quest) {
-                    false_random_quest = quests_list[getRandomInt(quests_list.length)];
-                }
-                if (key_language == "eng") {
-                    false_random_quest_val = false_random_quest.split("-")[1];
-                } else {
-                    false_random_quest_val = false_random_quest.split("-")[0];
-                }
-                document.getElementById("button_answer_" + i).innerHTML = false_random_quest_val;
-            }
-        }
-    }
-    window.onload = function() {
-        document.getElementById("progress_bar_load_game").innerHTML = "";
-        document.getElementById("div_level").hidden = false;
-    }
+  }
+  window.onload = function() {
+    document.getElementById("progress_bar_load_game").innerHTML = "";
+    document.getElementById("div_level").hidden = false;
+  }
 </script>
 
 
 </html>
-
